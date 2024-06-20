@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'people.dart';
+import 'people.dart'; // Importez vos pages ici
 import 'planets.dart';
 import 'species.dart';
 import 'starships.dart';
@@ -33,35 +33,71 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('STAR WARS'),
+        title: Text('Star Wars Wiki'),
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Image.asset(
+              'assets/people_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 0
+                  ? Color.fromRGBO(238, 191, 47, 1)
+                  : Colors.black,
+            ),
             label: 'People',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.work),
+            icon: Image.asset(
+              'assets/planets_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 1
+                  ? Color.fromRGBO(238, 191, 47, 1)
+                  : Colors.black,
+            ),
             label: 'Planets',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Image.asset(
+              'assets/species_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 2
+                  ? Color.fromRGBO(238, 191, 47, 1)
+                  : Colors.black,
+            ),
             label: 'Species',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.star),
+            icon: Image.asset(
+              'assets/starships_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 3
+                  ? Color.fromRGBO(238, 191, 47, 1)
+                  : Colors.black,
+            ),
             label: 'Starships',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info),
+            icon: Image.asset(
+              'assets/vehicles_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 4
+                  ? Color.fromRGBO(238, 191, 47, 1)
+                  : Colors.black,
+            ),
             label: 'Vehicles',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.redAccent,
-        unselectedItemColor: Colors.black,
+        selectedItemColor: Color.fromRGBO(238, 191, 47, 1),
         onTap: _onItemTapped,
       ),
     );
