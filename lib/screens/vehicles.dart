@@ -164,7 +164,9 @@ class VehicleDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           name,
-          style: const TextStyle(color: Color.fromRGBO(238, 191, 47, 1)),
+          style: const TextStyle(
+              color: Color.fromRGBO(238, 191, 47, 1),
+              fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Color.fromRGBO(238, 191, 47, 1)),
@@ -174,7 +176,7 @@ class VehicleDetailsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Center(
                 child: CircleAvatar(
@@ -183,36 +185,46 @@ class VehicleDetailsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Text('Model : $model',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Vehicle Class : $vehicleClass',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Manufacturer : $manufacturer',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Cost in Credits : $costInCredits',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Length : $length',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Crew : $crew',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Passengers : $passengers',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Max Atmosphering Speed : $maxAtmospheringSpeed',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Cargo Capacity : $cargoCapacity',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+              Text('Model : $model\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Vehicle Class : $vehicleClass\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Manufacturer : $manufacturer\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Cost in Credits : $costInCredits\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Length : $length\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Crew : $crew\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Passengers : $passengers\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Max Atmosphering Speed : $maxAtmospheringSpeed\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Cargo Capacity : $cargoCapacity\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
               Text('Consumables : $consumables',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
             ],
           ),
         ),

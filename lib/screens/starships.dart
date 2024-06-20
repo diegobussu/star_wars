@@ -139,7 +139,9 @@ class StarshipDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           name,
-          style: const TextStyle(color: Color.fromRGBO(238, 191, 47, 1)),
+          style: const TextStyle(
+              color: Color.fromRGBO(238, 191, 47, 1),
+              fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Color.fromRGBO(238, 191, 47, 1)),
@@ -149,7 +151,7 @@ class StarshipDetailsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Center(
                 child: CircleAvatar(
@@ -158,18 +160,22 @@ class StarshipDetailsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Text('Model : $model',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Manufacturer : $manufacturer',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Cost in Credits : $costInCredits',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+              Text('Model : $model\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Manufacturer : $manufacturer\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Cost in Credits : $costInCredits\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
               Text('Length : $length',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
             ],
           ),
         ),

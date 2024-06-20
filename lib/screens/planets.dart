@@ -139,7 +139,9 @@ class PlanetDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           name,
-          style: const TextStyle(color: Color.fromRGBO(238, 191, 47, 1)),
+          style: const TextStyle(
+              color: Color.fromRGBO(238, 191, 47, 1),
+              fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Color.fromRGBO(238, 191, 47, 1)),
@@ -149,7 +151,7 @@ class PlanetDetailsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Center(
                 child: CircleAvatar(
@@ -158,18 +160,22 @@ class PlanetDetailsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Text('Climate : $climate',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Terrain : $terrain',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Population : $population',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+              Text('Climate : $climate\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Terrain : $terrain\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Population : $population\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
               Text('Diameter : $diameter km',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
             ],
           ),
         ),

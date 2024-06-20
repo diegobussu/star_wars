@@ -155,7 +155,9 @@ class SpeciesDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           name,
-          style: const TextStyle(color: Color.fromRGBO(238, 191, 47, 1)),
+          style: const TextStyle(
+              color: Color.fromRGBO(238, 191, 47, 1),
+              fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Color.fromRGBO(238, 191, 47, 1)),
@@ -165,7 +167,7 @@ class SpeciesDetailsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Center(
                 child: CircleAvatar(
@@ -174,30 +176,38 @@ class SpeciesDetailsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Text('Classification : $classification',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Designation : $designation',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Average Height : $averageHeight cm',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Skin Colors : $skinColors',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Hair Colors : $hairColors',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Eye Colors : $eyeColors',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Average Lifespan : $averageLifespan years',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+              Text('Classification : $classification\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Designation : $designation\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Average Height : $averageHeight cm\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Skin Colors : $skinColors\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Hair Colors : $hairColors\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Eye Colors : $eyeColors\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Average Lifespan : $averageLifespan years\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
               Text('Language : $language',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
             ],
           ),
         ),

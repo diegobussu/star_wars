@@ -105,6 +105,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: const Color.fromRGBO(238, 191, 47, 1),
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         onTap: _onItemTapped,
       ),
     );

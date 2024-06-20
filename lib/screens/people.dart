@@ -151,7 +151,9 @@ class CharacterDetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           name,
-          style: const TextStyle(color: Color.fromRGBO(238, 191, 47, 1)),
+          style: const TextStyle(
+              color: Color.fromRGBO(238, 191, 47, 1),
+              fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.black,
         iconTheme: const IconThemeData(color: Color.fromRGBO(238, 191, 47, 1)),
@@ -161,7 +163,7 @@ class CharacterDetailsPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Center(
                 child: CircleAvatar(
@@ -170,27 +172,34 @@ class CharacterDetailsPage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Text('Height :  $height cm',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Mass : $mass kg',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Hair Color : $hairColor',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Skin Color : $skinColor',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Eye Color : $eyeColor',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
-              Text('Birth Year : $birthYear',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+              Text('Height :  $height cm\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Mass : $mass kg\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Hair Color : $hairColor\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Skin Color : $skinColor\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Eye Color : $eyeColor\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
+              Text('Birth Year : $birthYear\n',
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
               Text('Gender : $gender',
-                  style:
-                      const TextStyle(color: Color.fromRGBO(238, 191, 47, 1))),
+                  style: const TextStyle(
+                      color: Color.fromRGBO(238, 191, 47, 1),
+                      fontWeight: FontWeight.bold)),
             ],
           ),
         ),
