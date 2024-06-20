@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'people.dart'; // Importez vos pages ici
+import 'people.dart';
 import 'planets.dart';
 import 'species.dart';
 import 'starships.dart';
@@ -16,11 +16,11 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    PeoplePage(),
-    PlanetsPage(),
-    SpeciesPage(),
-    StarshipsPage(),
-    VehiclesPage(),
+    SpeciesPage(), // Index 0: SpeciesPage
+    PeoplePage(), // Index 1: PeoplePage
+    PlanetsPage(), // Index 2: PlanetsPage
+    StarshipsPage(), // Index 3: StarshipsPage
+    VehiclesPage(), // Index 4: VehiclesPage
   ];
 
   void _onItemTapped(int index) {
@@ -33,21 +33,39 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Star Wars Wiki'),
-      ),
+          title: const Text(
+            'Star Wars Wiki',
+            style: TextStyle(
+                color: Color.fromRGBO(238, 191, 47, 1),
+                fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.black),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.black,
         items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/species_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 0
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
+            ),
+            label: 'Species',
+          ),
           BottomNavigationBarItem(
             icon: Image.asset(
               'assets/people_icon.png',
               width: 30,
               height: 30,
-              color: _selectedIndex == 0
-                  ? Color.fromRGBO(238, 191, 47, 1)
-                  : Colors.black,
+              color: _selectedIndex == 1
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
             ),
             label: 'People',
           ),
@@ -56,22 +74,11 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
               'assets/planets_icon.png',
               width: 30,
               height: 30,
-              color: _selectedIndex == 1
-                  ? Color.fromRGBO(238, 191, 47, 1)
-                  : Colors.black,
+              color: _selectedIndex == 2
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
             ),
             label: 'Planets',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(
-              'assets/species_icon.png',
-              width: 30,
-              height: 30,
-              color: _selectedIndex == 2
-                  ? Color.fromRGBO(238, 191, 47, 1)
-                  : Colors.black,
-            ),
-            label: 'Species',
           ),
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -79,8 +86,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
               width: 30,
               height: 30,
               color: _selectedIndex == 3
-                  ? Color.fromRGBO(238, 191, 47, 1)
-                  : Colors.black,
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
             ),
             label: 'Starships',
           ),
@@ -90,14 +97,14 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
               width: 30,
               height: 30,
               color: _selectedIndex == 4
-                  ? Color.fromRGBO(238, 191, 47, 1)
-                  : Colors.black,
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
             ),
             label: 'Vehicles',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromRGBO(238, 191, 47, 1),
+        selectedItemColor: const Color.fromRGBO(238, 191, 47, 1),
         onTap: _onItemTapped,
       ),
     );
