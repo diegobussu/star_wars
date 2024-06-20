@@ -8,7 +8,7 @@ class PlanetsPage extends StatefulWidget {
 }
 
 class _PlanetsPageState extends State<PlanetsPage> {
-  late Future<Map<String, dynamic>> _planetsData;
+  late Future<List<dynamic>> _planetsData;
 
   @override
   void initState() {
@@ -16,31 +16,40 @@ class _PlanetsPageState extends State<PlanetsPage> {
     _planetsData = _fetchPlanetsData();
   }
 
-  Future<Map<String, dynamic>> _fetchPlanetsData() async {
-    final response =
-        await http.get(Uri.parse('https://swapi.dev/api/planets/'));
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body);
-    } else {
-      throw Exception('Failed to load data');
+  Future<List<dynamic>> _fetchPlanetsData() async {
+    List<dynamic> allResults = [];
+    String nextUrl = 'https://swapi.dev/api/planets/';
+
+    while (nextUrl.isNotEmpty) {
+      final response = await http.get(Uri.parse(nextUrl));
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+        final List<dynamic> results = data['results'];
+        allResults.addAll(results);
+        nextUrl = data['next'] ?? '';
+      } else {
+        throw Exception('Failed to load data');
+      }
     }
+
+    return allResults;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: FutureBuilder<Map<String, dynamic>>(
+      body: FutureBuilder<List<dynamic>>(
         future: _planetsData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (!snapshot.hasData || snapshot.data == null) {
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return Center(child: Text('No data available'));
           } else {
-            List<dynamic> results = snapshot.data!['results'];
+            List<dynamic> results = snapshot.data!;
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

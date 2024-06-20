@@ -8,7 +8,7 @@ class StarshipsPage extends StatefulWidget {
 }
 
 class _StarshipsPageState extends State<StarshipsPage> {
-  late Future<Map<String, dynamic>> _starshipsData;
+  late Future<List<dynamic>> _starshipsData;
 
   @override
   void initState() {
@@ -16,21 +16,30 @@ class _StarshipsPageState extends State<StarshipsPage> {
     _starshipsData = _fetchStarshipsData();
   }
 
-  Future<Map<String, dynamic>> _fetchStarshipsData() async {
-    final response =
-        await http.get(Uri.parse('https://swapi.dev/api/starships/'));
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body);
-    } else {
-      throw Exception('Failed to load data');
+  Future<List<dynamic>> _fetchStarshipsData() async {
+    List<dynamic> allResults = [];
+    String nextUrl = 'https://swapi.dev/api/starships/';
+
+    while (nextUrl.isNotEmpty) {
+      final response = await http.get(Uri.parse(nextUrl));
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> data = jsonDecode(response.body);
+        final List<dynamic> results = data['results'];
+        allResults.addAll(results);
+        nextUrl = data['next'] ?? '';
+      } else {
+        throw Exception('Failed to load data');
+      }
     }
+
+    return allResults;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: FutureBuilder<Map<String, dynamic>>(
+      body: FutureBuilder<List<dynamic>>(
         future: _starshipsData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -40,7 +49,7 @@ class _StarshipsPageState extends State<StarshipsPage> {
           } else if (!snapshot.hasData || snapshot.data == null) {
             return Center(child: Text('No data available'));
           } else {
-            List<dynamic> results = snapshot.data!['results'];
+            List<dynamic> results = snapshot.data!;
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
