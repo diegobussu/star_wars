@@ -4,6 +4,7 @@ import 'planets.dart';
 import 'species.dart';
 import 'starships.dart';
 import 'vehicles.dart';
+import 'settings.dart'; // Import the SettingsPage
 
 class MyBottomNavigationBar extends StatefulWidget {
   const MyBottomNavigationBar({Key? key}) : super(key: key);
@@ -33,13 +34,26 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-            'Star Wars Wiki',
-            style: TextStyle(
-                color: Color.fromRGBO(238, 191, 47, 1),
-                fontWeight: FontWeight.bold),
+        title: const Text(
+          'Star Wars Wiki',
+          style: TextStyle(
+            color: Color.fromRGBO(238, 191, 47, 1),
+            fontWeight: FontWeight.bold,
           ),
-          backgroundColor: Colors.black),
+        ),
+        backgroundColor: Colors.black,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings, color: Color.fromRGBO(238, 191, 47, 1)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+            },
+          ),
+        ],
+      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

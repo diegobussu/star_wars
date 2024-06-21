@@ -91,7 +91,7 @@ class _StarshipsPageState extends State<StarshipsPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         CircleAvatar(
-                          radius: 40,
+                          radius: 60,
                           backgroundImage: NetworkImage(imageUrl),
                         ),
                         const SizedBox(height: 10),
