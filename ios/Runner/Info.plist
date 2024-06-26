@@ -45,5 +45,15 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	
+	<!-- Ajout pour les notifications locales -->
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>Notification usage description</string>
+    
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>fetch</string>
+    </array>
+
 </dict>
 </plist>

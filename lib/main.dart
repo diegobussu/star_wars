@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'screens/navigation.dart';
 
+import 'notification_manager.dart';
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  NotificationManager.initialize();
+  NotificationManager.startPeriodicNotifications();
   runApp(const MainApp());
 }
 
