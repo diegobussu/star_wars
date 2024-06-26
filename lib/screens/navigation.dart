@@ -4,6 +4,7 @@ import 'planets.dart';
 import 'species.dart';
 import 'starships.dart';
 import 'vehicles.dart';
+import 'settings.dart'; // Import the SettingsPage
 
 class MyBottomNavigationBar extends StatefulWidget {
   const MyBottomNavigationBar({Key? key}) : super(key: key);
@@ -16,11 +17,11 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int _selectedIndex = 0;
 
   static List<Widget> _widgetOptions = <Widget>[
-    PeoplePage(),
-    PlanetsPage(),
-    SpeciesPage(),
-    StarshipsPage(),
-    VehiclesPage(),
+    SpeciesPage(), // Index 0: SpeciesPage
+    PeoplePage(), // Index 1: PeoplePage
+    PlanetsPage(), // Index 2: PlanetsPage
+    StarshipsPage(), // Index 3: StarshipsPage
+    VehiclesPage(), // Index 4: VehiclesPage
   ];
 
   void _onItemTapped(int index) {
@@ -33,35 +34,92 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('STAR WARS'),
+        title: const Text(
+          'Star Wars Wiki',
+          style: TextStyle(
+            color: Color.fromRGBO(238, 191, 47, 1),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.black,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings, color: Color.fromRGBO(238, 191, 47, 1)),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingsPage()),
+              );
+            },
+          ),
+        ],
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.black,
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'People',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.work),
-            label: 'Planets',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Image.asset(
+              'assets/species_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 0
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
+            ),
             label: 'Species',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.star),
+            icon: Image.asset(
+              'assets/people_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 1
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
+            ),
+            label: 'People',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/planets_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 2
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
+            ),
+            label: 'Planets',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset(
+              'assets/starships_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 3
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
+            ),
             label: 'Starships',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info),
+            icon: Image.asset(
+              'assets/vehicles_icon.png',
+              width: 30,
+              height: 30,
+              color: _selectedIndex == 4
+                  ? const Color.fromRGBO(238, 191, 47, 1)
+                  : const Color.fromRGBO(238, 191, 47, 1),
+            ),
             label: 'Vehicles',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.redAccent,
-        unselectedItemColor: Colors.black,
+        selectedItemColor: const Color.fromRGBO(238, 191, 47, 1),
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
         onTap: _onItemTapped,
       ),
     );

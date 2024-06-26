@@ -9,7 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^0.13.3
   url_launcher: ^6.0.9
+  flutter_local_notifications: ^9.2.0
 
 dev_dependencies:
   flutter_test:
