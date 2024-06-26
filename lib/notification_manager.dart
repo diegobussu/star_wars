@@ -4,8 +4,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class NotificationManager {
   static FlutterLocalNotificationsPlugin? _flutterLocalNotificationsPlugin;
+  static Timer? _notificationTimer; // Timer pour les notifications périodiques
 
-  // Liste des citations de Star Wars
   static List<String> starWarsQuotes = [
     "Que la Force soit avec toi. - Obi-Wan Kenobi",
     "La Force sera toujours avec toi. - Obi-Wan Kenobi",
@@ -16,50 +16,37 @@ class NotificationManager {
     "C'est un piège! - Amiral Ackbar"
   ];
 
-  // Initialisation du plugin de notifications locales
   static void initialize() {
     _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-
-    // Paramètres d'initialisation spécifiques à iOS
     const IOSInitializationSettings initializationSettingsIOS =
         IOSInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
     );
-
     final InitializationSettings initializationSettings =
         InitializationSettings(
       iOS: initializationSettingsIOS,
     );
-
-    // Initialisation du plugin avec les paramètres
     _flutterLocalNotificationsPlugin!.initialize(initializationSettings);
   }
 
-  // Démarrage des notifications périodiques
   static void startPeriodicNotifications() {
-    print('Démarrage des notifications périodiques...');
-
-    // Détails spécifiques à iOS pour les notifications
+    print('Démarrage des notifications périodiques.');
     const IOSNotificationDetails iosPlatformChannelSpecifics =
         IOSNotificationDetails(
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
     );
-
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       iOS: iosPlatformChannelSpecifics,
     );
 
-    // Envoi d'une notification toutes les 5 secondes
-    Timer.periodic(const Duration(seconds: 5), (timer) {
-      print('Envoi d\'une notification périodique...');
-      // Sélection d'une citation aléatoire de Star Wars
+    _notificationTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+      print('Envoi d\'une notification périodique.');
       String randomQuote = _getRandomStarWarsQuote();
 
-      // Affichage de la notification
       _flutterLocalNotificationsPlugin!.show(
         0,
         'Citation Star Wars',
@@ -69,7 +56,11 @@ class NotificationManager {
     });
   }
 
-  // Fonction privée pour obtenir une citation aléatoire de Star Wars
+  static void stopPeriodicNotifications() {
+    print('Arrêt des notifications.');
+    _notificationTimer?.cancel();
+  }
+
   static String _getRandomStarWarsQuote() {
     Random random = Random();
     int index = random.nextInt(starWarsQuotes.length);
